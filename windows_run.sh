@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 IMAGE_NAME=mqt0029/ros2-tutorial
-IMAGE_TAG=ubuntu
+IMAGE_TAG=windows11
 CONTAINER_NAME=ros2-tutorial-container
 CONTAINER_ID=`docker ps -aqf "name=^/${CONTAINER_NAME}$"`
 
@@ -13,9 +13,7 @@ if [ -z "${CONTAINER_ID}" ]; then
     --detach \
     --name ${CONTAINER_NAME} \
     --privileged \
-    --device /dev/dxg \
-    --device /dev/dri/card0 \
-    --device /dev/dri/renderD128 \
+    --gpus all \
     --env DISPLAY=$DISPLAY \
     --env WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
     --env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
