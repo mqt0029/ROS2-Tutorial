@@ -13,7 +13,9 @@ if [ -z "${CONTAINER_ID}" ]; then
     --detach \
     --name ${CONTAINER_NAME} \
     --privileged \
-    --gpus all \
+    --device /dev/dxg \
+    --device /dev/dri/card0 \
+    --device /dev/dri/renderD128 \
     --env DISPLAY=$DISPLAY \
     --env WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
     --env XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR \
