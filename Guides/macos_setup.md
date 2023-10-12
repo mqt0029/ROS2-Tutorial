@@ -68,8 +68,7 @@ For more examples and ideas, visit:
 Run the following command to clone the repository.
 
 ```
-$ git clone https://github.com/mqt0029/ROS2-Tutorial.git
-$ cd ROS2-Tutorial
+$ git clone https://github.com/mqt0029/ROS2-Tutorial.git && cd ROS2-Tutorial
 ```
 
 ### 2.3 Create the Docker container
