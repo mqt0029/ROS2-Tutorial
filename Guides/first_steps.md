@@ -35,7 +35,7 @@ You will need the following extensions:
 Once these are installed, you will see a new icon in the left sidebar that indicates you can attach
 to "remote" hosts, in our case, a container.
 
-![](../Media/dev_container.mp4)
+https://github.com/mqt0029/ROS2-Tutorial/assets/46615495/4d8914f1-8495-40f0-85a0-191767fc1adb
 
 ### 1.3 Install VS Code Extensions inside Container
 
