@@ -14,7 +14,7 @@ To install Homebrew, see https://brew.sh/.
 
 Afterwards, install `git` via Homebrew.
 
-```console
+```
 $ brew install git
 ```
 
@@ -28,7 +28,7 @@ $ brew install git
 
 In a terminal, run the following command. **Your output should mostly match the output shown**.
 
-```console
+```
 $ docker run --tty --rm hello-world
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
@@ -64,7 +64,7 @@ $
 
 Run the following command to clone the repository.
 
-```console
+```
 $ git clone https://github.com/mqt0029/ROS2-Tutorial.git
 $ cd ROS2-Tutorial
 ```
@@ -74,7 +74,7 @@ $ cd ROS2-Tutorial
 The `run_container.sh` script will allow you to create, start, and attach to the container when
 opening new terminals. Running this script for the first time will create the container:
 
-```console
+```
 user@DESKTOP:~/ROS2-Tutorial$ ./run_container.sh
 [container hash]
 

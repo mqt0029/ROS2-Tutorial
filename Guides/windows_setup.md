@@ -19,7 +19,7 @@ updates pre-installed (as in, Windows does this for you anyway):
 
 In an elevated PowerShell terminal, run the following command:
 
-```console
+```
 wsl --install -d Ubuntu-22.04
 ```
 
@@ -58,14 +58,14 @@ processors=4
 and place it in `C:\Users\<your username>\.wslconfig`. Afterwards, force restart WLS2 and Docker by
 **running the following command in Powershell**
 
-```console
+```
 wsl --shutdown
 ```
 
 To verify that the configuration is applied, run the following command in a new Ubuntu bash terminal
 
-```console
-user@DESKTOP:~$ sudo apt install -y htop && htop
+```
+sudo apt install -y htop && htop
 ```
 
 You should see that the total memory available is 8GB and the total number of logical cores is 4.
@@ -74,10 +74,14 @@ You should see that the total memory available is 8GB and the total number of lo
 
 ### 2.1 Verify Docker Installation
 
-In an Ubuntu terminal, run the following command. **Your output should mostly match the output shown**.
+In an Ubuntu terminal, run the following command.
 
-```console
-user@DESKTOP:~$ docker run --tty --rm hello-world
+```
+docker run --tty --rm hello-world
+```
+Your output should mostly match the output shown.
+
+```
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 719385e32844: Pull complete
@@ -104,18 +108,20 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
-
-user@DESKTOP:~$
 ```
 
 ### 2.2 Clone the repository
 
-In an Ubuntu terminal, run the following command to clone the repository.
+1. Install `git`
 
-```console
-user@DESKTOP:~$ sudo apt -y install git
-user@DESKTOP:~$ git clone https://github.com/mqt0029/ROS2-Tutorial.git
-user@DESKTOP:~$ cd ROS2-Tutorial
+```
+sudo apt -y install git
+```
+
+2. Clone the repository
+
+```
+git clone https://github.com/mqt0029/ROS2-Tutorial.git && cd ROS2-Tutorial
 ```
 ### 2.3 Create the Docker container
 
@@ -123,7 +129,7 @@ Before you create a container, make sure WSL will use your desired GPU. If you h
 Intel, WSL2 might enumerate them in the wrong order, which may result in NVIDIA GPU not being
 utilized. To fix this, run the following command in your Ubuntu terminal:
 
-```console
+```
 echo "export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA" >> ~/.bashrc && source ~/.bashrc
 ```
 

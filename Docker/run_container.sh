@@ -61,8 +61,28 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
             # if we do have access to an NVIDIA GPU, use the nvidia-docker image
             if [[ $GPU == *' nvidia '* ]]; then
                 IMAGE_TAG="ubuntu_nvidia"
+                    docker run \
+                    --tty \
+                    --detach \
+                    --name ${CONTAINER_NAME} \
+                    --gpus all \
+                    --runtime nvidia \
+                    --privileged \
+                    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+                    --env DISPLAY=$DISPLAY \
+                    ${IMAGE_NAME}:${IMAGE_TAG}
             # otherwise, use the regular (Intel) image
             else
+                    docker run \
+                    --tty \
+                    --detach \
+                    --name ${CONTAINER_NAME} \
+                    --gpus all \
+                    --device /dev/dri:/dev/dri \
+                    --privileged \
+                    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+                    --env DISPLAY=$DISPLAY \
+                    ${IMAGE_NAME}:${IMAGE_TAG}
                 IMAGE_TAG="latest"
             fi
         # if we're not on Ubuntu, yell bloody murder and exit
@@ -71,16 +91,6 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
             exit 1
         fi
 
-        docker run \
-        --tty \
-        --detach \
-        --name ${CONTAINER_NAME} \
-        --gpus all \
-        --runtime nvidia \
-        --privileged \
-        --volume /tmp/.X11-unix:/tmp/.X11-unix \
-        --env DISPLAY=$DISPLAY \
-        ${IMAGE_NAME}:${IMAGE_TAG}
     else
         # container already exists...
         # allow UI spawning through X server
