@@ -35,7 +35,7 @@ You will need the following extensions:
 Once these are installed, you will see a new icon in the left sidebar that indicates you can attach
 to "remote" hosts, in our case, a container.
 
-> 🛠️ Need to add photos or GIF here
+![](../Media/dev_container.mp4)
 
 ### 1.3 Install VS Code Extensions inside Container
 
