@@ -26,10 +26,15 @@ $ brew install git
 
 ### 2.1 Verify Docker Installation
 
-In a terminal, run the following command. **Your output should mostly match the output shown**.
+In a terminal, run the following command.
 
 ```
 $ docker run --tty --rm hello-world
+```
+
+Your output should mostly match the output shown.
+
+```
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 719385e32844: Pull complete
@@ -56,8 +61,6 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
-
-$
 ```
 
 ### 2.2 Clone the repository
