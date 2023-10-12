@@ -110,7 +110,22 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 # ---------------------------------------------------------------------------- #
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    IMAGE_TAG="macos"
+    # if container does not exist, create it
+    if [ -z "${CONTAINER_ID}" ]; then
+        docker run \
+        --tty \
+        --detach \
+        --publish 6080:6080 \
+        --name ${CONTAINER_NAME} \
+        ${IMAGE_NAME}:macos
+    else
+        # if container exists but is not running, start it
+        # no need to attach, we'll be using NoVNC on browser
+        if [ -z `docker ps -qf "name=^/${CONTAINER_NAME}$"` ]; then
+            docker start ${CONTAINER_ID}
+        fi
+    fi
+    echo "Connect to http://localhost:6080/ on your browser to access the container."
 fi
 
 # ---------------------------------------------------------------------------- #
