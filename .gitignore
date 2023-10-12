@@ -52,3 +52,7 @@ CATKIN_IGNORE
 
 # VSCode local settings
 .vscode
+
+# Dockerfiles
+# Docker/Dockerfile.*
+# Docker/vnc_startup.sh

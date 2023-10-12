@@ -1,0 +1,31 @@
+FROM mqt0029/ros2-tutorial:latest
+
+# Set environment variables
+ENV DISPLAY=:1
+ENV VNC_PORT=5901
+
+# Expose VNC port
+EXPOSE ${VNC_PORT}
+
+# Install necessary packages
+RUN apt-get update -y && apt-get install -y --no-install-recommends \
+    xfce4 \
+    xfce4-goodies \
+    x11vnc \
+    xvfb \
+    dbus-x11 \
+    alacarte \
+    && apt-get -y autoremove \
+    && apt-get clean
+
+# Clone noVNC for browser-based VNC access
+RUN git clone --progress --verbose https://github.com/novnc/noVNC.git /opt/novnc \
+    && rm -rf /opt/novnc/.git \
+    && ln -s /opt/novnc/vnc.html /opt/novnc/index.html
+
+# Add a startup script to launch XFCE4 and VNC
+COPY ./vnc_startup.sh /vnc_startup.sh
+RUN chmod +x /vnc_startup.sh
+
+# Set the default command to run our startup script
+CMD ["/vnc_startup.sh"]
