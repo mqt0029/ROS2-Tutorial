@@ -3,6 +3,24 @@
 This repository contains the Dockerfile for ROS 2 Humble with basic simulation support to get you
 started with ROS 2.
 
+## Quick Start
+
+For resource limited systems, just run the following command
+
+```
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker run --detach --publish 6080:6080 mqt0029/ros2-tutorial
+```
+
+and your development environment will be accessible at [`http://localhost:6080`](http://localhost:6080).
+
+Otherwise, follow the detailed setup instructions for your specific system below.
+
+Pick your development platform and follow the instructions that follows.
+
+1. [Native Ubuntu 22.04](./Guides/ubuntu_setup.md)
+2. [WLS2 Ubuntu 22.04 on Windows 11](./Guides/windows_setup.md)
+3. [MacOS](./Guides/macos_setup.md)
+
 ## System Requirements
 
 ### Minimum Requirements
@@ -24,14 +42,6 @@ started with ROS 2.
 - WLS2 Ubuntu 22.04 on Windows 11 (with or without NVIDIA GPU)
 
 > 🛠️ MacOS support is currently under development.
-
-## Quick Start
-
-Pick your development platform and follow the instructions that follows.
-
-1. [Native Ubuntu 22.04](./Guides/ubuntu_setup.md)
-2. [WLS2 Ubuntu 22.04 on Windows 11](./Guides/windows_setup.md)
-3. [MacOS](./Guides/macos_setup.md)
 
 ## Resources
 
