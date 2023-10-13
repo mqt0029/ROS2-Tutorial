@@ -5,10 +5,18 @@ started with ROS 2.
 
 ## Quick Start
 
-For resource limited systems, just run the following command
+For resource limited systems, just run the following commands
+
+1. (Optional) Remove all existing containers
 
 ```
-git clone https://github.com/mqt0029/ROS2-Tutorial.git && ./ROS2-Tutorial/Docker/run_container.sh --minimal
+$ docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
+```
+
+2. Run container accessible via NoVNC Web Browser
+
+```
+$ git clone https://github.com/mqt0029/ROS2-Tutorial.git && ./ROS2-Tutorial/Docker/run_container.sh --minimal
 ```
 
 and your development environment will be accessible at [`http://localhost:6080`](http://localhost:6080). The password will be `myrobotsim`.
