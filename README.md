@@ -8,7 +8,7 @@ started with ROS 2.
 For resource limited systems, just run the following command
 
 ```
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker run --detach --publish 6080:6080 mqt0029/ros2-tutorial
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker run --detach --tty --publish 6080:6080 mqt0029/ros2-tutorial
 ```
 
 and your development environment will be accessible at [`http://localhost:6080`](http://localhost:6080).
