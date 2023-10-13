@@ -14,22 +14,11 @@ IMAGE_NAME="mqt0029/ros2-tutorial"
 CONTAINER_NAME="rvl-ros2-tutorial-container"
 CONTAINER_ID=`docker ps -aqf "name=^/${CONTAINER_NAME}$"`
 
-# if the flag -m is passed
+# if the flag --minimal is passed
 if [[ $1 == "--minimal" ]]; then
-    # remove all containers
-    $(docker stop $(docker ps -aq) || true) 2> /dev/null
-    $(docker rm -f $(docker ps -aq) || true) 2> /dev/null
-
-    # wait for a bit
-    sleep 1
-
     # if container does not exist, create it
     if [ -z "${CONTAINER_ID}" ]; then
-        docker run \
-        --tty \
-        --interactive \
-        --detach \
-        --publish 6080:6080 \
+        docker run -i -t -d -p 6080:6080 \
         --name ${CONTAINER_NAME} \
         ${IMAGE_NAME}:macos
     else
