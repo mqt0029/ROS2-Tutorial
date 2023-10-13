@@ -7,11 +7,19 @@ started with ROS 2.
 
 For resource limited systems, just run the following command
 
+1. (Optional) Purge all existing containers
+
 ```
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker run -i -t -p 6080:6080 mqt0029/ros2-tutorial:macos
+docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && 
 ```
 
-and your development environment will be accessible at [`http://localhost:6080`](http://localhost:6080).
+2. Start new ROS 2 Tutorial container
+
+```
+docker run -i -t -d -p 6080:6080 mqt0029/ros2-tutorial:macos
+```
+
+and your development environment will be accessible at [`http://localhost:6080`](http://localhost:6080). The password will be `myrobotsim`.
 
 Otherwise, follow the detailed setup instructions for your specific system below.
 
