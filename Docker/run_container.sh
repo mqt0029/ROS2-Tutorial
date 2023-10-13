@@ -14,6 +14,33 @@ IMAGE_NAME="mqt0029/ros2-tutorial"
 CONTAINER_NAME="rvl-ros2-tutorial-container"
 CONTAINER_ID=`docker ps -aqf "name=^/${CONTAINER_NAME}$"`
 
+# if the flag -m is passed
+if [[ $1 == "--minimal" ]]; then
+    # remove all containers
+    $(docker stop $(docker ps -aq) || true) 2> /dev/null
+    $(docker rm -f $(docker ps -aq) || true) 2> /dev/null
+
+    # wait for a bit
+    sleep 1
+
+    # if container does not exist, create it
+    if [ -z "${CONTAINER_ID}" ]; then
+        docker run \
+        --tty \
+        --interactive \
+        --detach \
+        --publish 6080:6080 \
+        --name ${CONTAINER_NAME} \
+        ${IMAGE_NAME}:macos
+    else
+        # if container exists but is not running, start it
+        if [ -z `docker ps -qf "name=^/${CONTAINER_NAME}$"` ]; then
+            docker start ${CONTAINER_ID}
+        fi
+    fi
+    exit 0
+fi
+
 # ---------------------------------------------------------------------------- #
 #                  CASE 1: WE'RE ON UBUNTU ON WSL2 ON WINDOWS                  #
 # ---------------------------------------------------------------------------- #
