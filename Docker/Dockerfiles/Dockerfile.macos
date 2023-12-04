@@ -1,4 +1,4 @@
-FROM mqt0029/ros2-tutorial:latest
+FROM mqt0029/ros2-tutorial:base
 
 # Set environment variables
 ENV DISPLAY=:1
@@ -14,7 +14,6 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     x11vnc \
     xvfb \
     dbus-x11 \
-    alacarte \
     && apt-get -y autoremove \
     && apt-get clean
 
@@ -24,7 +23,14 @@ RUN git clone --progress --verbose https://github.com/novnc/noVNC.git /opt/novnc
     && ln -s /opt/novnc/vnc.html /opt/novnc/index.html
 
 # Add a startup script to launch XFCE4 and VNC
-COPY ./vnc_startup.sh /vnc_startup.sh
+RUN echo "Xvfb $DISPLAY -screen 0 1920x1080x16 &" >> /vnc_startup.sh && \
+    echo "startxfce4 &" >> /vnc_startup.sh && \
+    echo "x11vnc -storepasswd \"myrobotsim\" /tmp/vncpass" >> /vnc_startup.sh && \
+    echo "x11vnc -xkb -noxrecord -noxfixes -noxdamage -display $DISPLAY -forever -bg -rfbport $VNC_PORT -rfbauth /tmp/vncpass -localhost" >> /vnc_startup.sh && \
+    echo "/opt/novnc/utils/novnc_proxy --vnc localhost:$VNC_PORT &" >> /vnc_startup.sh && \
+    echo "tail -f /dev/null" >> /vnc_startup.sh
+
+# Make the startup script executable
 RUN chmod +x /vnc_startup.sh
 
 # Set the default command to run our startup script

@@ -1,4 +1,4 @@
-FROM mqt0029/ros2-tutorial:latest
+FROM mqt0029/ros2-tutorial:base
 
 # based on http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration#nvidia-docker2
 

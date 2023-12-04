@@ -1,4 +1,7 @@
-FROM mqt0029/ros2-tutorial:latest
+FROM mqt0029/ros2-tutorial:base
+
+# see https://github.com/microsoft/wslg/wiki/GPU-selection-in-WSLg
+ENV MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 
 # see https://github.com/microsoft/wslg/blob/main/samples/container/Containers.md#containerized-applications-access-to-the-vgpu
 ENV LIBVA_DRIVER_NAME d3d12

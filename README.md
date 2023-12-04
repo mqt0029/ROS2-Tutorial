@@ -5,51 +5,68 @@ started with ROS 2.
 
 ## Quick Start
 
-For resource limited systems, just run the following commands
+### 1. Install Docker
 
-1. (Optional) Remove all existing containers
+Follow the instructions on the [Docker website](https://docs.docker.com/get-docker/) to install for
+Windows or Mac.
 
-```
-docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)
-```
+For native Linux, the same instructions may be used, but `docker.io` on apt would suffice.
 
-2. Run container accessible via NoVNC Web Browser
-
-```
-git clone https://github.com/mqt0029/ROS2-Tutorial.git && ./ROS2-Tutorial/Docker/run_container.sh --minimal
+```console
+$ sudo apt install docker.io docker-compose
 ```
 
-and your development environment will be accessible at [`http://localhost:6080`](http://localhost:6080). The password will be `myrobotsim`.
+> 🗒️ If you are on Linux, be sure to follow [Docker Post-Installtion
+> Steps](https://docs.docker.com/engine/install/linux-postinstall/).
 
-Otherwise, follow the detailed setup instructions for your specific system below.
+### 2. Clone this repository
 
-Pick your development platform and follow the instructions that follows.
+```console
+$ git clone https://github.com/mqt0029/ROS2-Tutorial.git
+```
 
-1. [Native Ubuntu 22.04](./Guides/ubuntu_setup.md)
-2. [WLS2 Ubuntu 22.04 on Windows 11](./Guides/windows_setup.md)
-3. [MacOS](./Guides/macos_setup.md)
+### 3. Generate scripts for your specific platform
 
-## System Requirements
+A convenient `config_generator.py` script is provided to generate the necessary scripts for your
+specific host OS and GPU availability. The script will generate a `run.sh` script that will be used
+to create and attach to the tutorial container going forward.
 
-### Minimum Requirements
+```console
+$ cd ROS2-Tutorial/Docker && python3 config_generator.py
+```
 
-- 8GB RAM
-- 4 CPU Cores
-- 20GB Disk Space
+See [this README](Docker/README.md) for more details.
 
-### Recommended Requirements
+### 4. Run the container
 
-- 16GB RAM
-- 8 CPU Cores
-- 50GB Disk Space
-- NVIDIA GPU or at least Intel HD or Iris Pro Graphics
+The `run.sh` script is designed to automatically create and attach to the container with the
+appropriate image and tag. You do not need to run anything else except this script to get your
+terminal into the container.
 
-## Supported Platforms
+```console
+$ /path/to/this/repository/Docker/run.sh
+```
 
-- Ubuntu 22.04 (with or without NVIDIA GPU)
-- WLS2 Ubuntu 22.04 on Windows 11 (with or without NVIDIA GPU)
+### 5. Continue with the tutorial
 
-> 🛠️ MacOS support is currently under development.
+🎉🎉🎉 Congratulations! You are now in the container and ready to start the tutorial. Continue with the [ROS
+2 Tutorials](https://docs.ros.org/en/humble/Tutorials.html) or follow the [ROS 2 Progression Guide](GUIDES.md).
+
+## Troubleshooting
+
+### 1. Gazebo not starting
+
+On WSL2, if you are seeing error `D3D12: Device Removed.` and Gazebo is not showing the GUI windows,
+you may need to update your WSL2 kernel as well as your graphics driver. This is known to happen to Intel Iris Xe graphics.
+
+In an elevated PowerShell, run the following commands:
+
+```console
+PS> wsl --update --pre-release
+```
+
+Additionally, download and install latest driver from [Intel's
+website](https://www.intel.com/content/www/us/en/download/785597/intel-arc-iris-xe-graphics-windows.html?wapkw=Iris%20Xe).
 
 ## Resources
 
