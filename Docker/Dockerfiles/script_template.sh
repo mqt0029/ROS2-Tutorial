@@ -1,4 +1,4 @@
-#!/usr/env/bin bash
+#!/usr/bin/env bash
 
 IMAGE_NAME="mqt0029/ros2-tutorial"
 CONTAINER_NAME="rvl-ros2-tutorial-container"
