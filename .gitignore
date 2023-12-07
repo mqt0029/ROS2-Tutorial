@@ -56,3 +56,4 @@ CATKIN_IGNORE
 # Dockerfiles
 # Docker/Dockerfile.*
 # Docker/vnc_startup.sh
+Docker/run_container.sh

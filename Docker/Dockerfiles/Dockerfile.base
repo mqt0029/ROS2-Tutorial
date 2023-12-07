@@ -12,8 +12,6 @@ RUN apt-get update \
     && apt-get -y dist-upgrade \
     && apt-get -y upgrade
 
-# && add-apt-repository ppa:kisak/kisak-mesa \
-
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
     git \
     curl \

@@ -19,6 +19,11 @@ $ sudo apt install docker.io docker-compose
 > 🗒️ If you are on Linux, be sure to follow [Docker Post-Installtion
 > Steps](https://docs.docker.com/engine/install/linux-postinstall/).
 
+> :spiral_notepad: If you have NVIDIA GPU, be sure to install and configure
+> 1. For native Linux, [NVIDIA Container Toolkit for
+Docker](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-with-apt).
+> 2. For WSL2 on Windows 11, [CUDA 12.1 for WSL2](https://developer.nvidia.com/cuda-12-1-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local).
+
 ### 2. Clone this repository
 
 ```console
@@ -44,7 +49,7 @@ appropriate image and tag. You do not need to run anything else except this scri
 terminal into the container.
 
 ```console
-$ /path/to/this/repository/Docker/run.sh
+$ /path/to/this/repository/Docker/run_container.sh
 ```
 
 ### 5. Continue with the tutorial
