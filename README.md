@@ -13,7 +13,7 @@ Windows or Mac.
 For native Linux, the same instructions may be used, but `docker.io` on apt would suffice.
 
 ```console
-$ sudo apt install docker.io docker-compose
+$ sudo apt install docker.io docker-compose python3-dev python3-pip python3-tk
 ```
 
 > 🗒️ If you are on Linux, be sure to follow [Docker Post-Installtion
@@ -35,6 +35,8 @@ $ git clone https://github.com/mqt0029/ROS2-Tutorial.git
 A convenient `config_generator.py` script is provided to generate the necessary scripts for your
 specific host OS and GPU availability. The script will generate a `run.sh` script that will be used
 to create and attach to the tutorial container going forward.
+
+> :warning: This script needs the module `tkinter` to run, install it either through `pip` or `apt`
 
 ```console
 $ cd ROS2-Tutorial/Docker && python3 config_generator.py

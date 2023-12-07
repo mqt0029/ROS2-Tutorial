@@ -12,7 +12,7 @@
 - Python 3 `tkinter` module
 
 ```console
-user@host:~$ python3 -m pip install tkinter
+user@host:~$ sudo apt install python3-dev python3-pip python3-tk
 ```
 
 ## Usage
